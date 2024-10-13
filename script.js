@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('task-list');
     let tasks = [];
 
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-        const tasks = JSON.parse(storedTasks);
-        tasks.forEach(task => addTask(task, 
-        false));
+    function loadTasks() {
+        const storedTasks = localStorage.getItem('tasks');
+        if (storedTasks) {
+            const tasks = JSON.parse(storedTasks);
+            tasks.forEach(task => addTask(task, 
+            false));
+        }
     }
+    loadTasks();
 
     // Add event listeners
     addButton.addEventListener('click', addTask);
